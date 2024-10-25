@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .chat-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: white;
+            height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 20px;
+        }
+        .message {
+            margin: 10px 0;
+        }
+        .bot-message {
+            font-weight: bold;
+            color: green;
+        }
+        .user-message {
+            font-style: italic;
+            color: blue;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Restaurant Chatbot</h1>
+        <div class="chat-box" id="chat-box">
+            <!-- Chat messages will appear here -->
+            <div class="message bot-message">Bot: Hi! How can I help you today?</div>
+        </div>
+        <form method="POST" action="{% url 'chatbot_response' %}">
+            {% csrf_token %}
+            <input type="text" name="user_message" id="user-message" placeholder="Type your message..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
